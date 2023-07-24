@@ -1,95 +1,86 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"
+import { useEffect, useState } from "react"
+import CardCard, { CarType } from "./components/CARS/car-card"
+import DropDown, { OptionType } from "./components/DROP-DOWN/drop-down"
+import Pagination from "./components/PAGINATION/pagination"
 
-export default function Home() {
+function Home() {
+  const [carList,setCarList] = useState<CarType[]>([])
+  const [rpp, setRpp] = useState<number>(4);
+  const [page,setPage] = useState<number>(1)
+  const [numberOfItems,setNumberOfItems] = useState<number>(1)
+
+  const rppOptions: OptionType[] = [
+    {
+      value: "4",
+    },
+    {
+      value: "8",
+    },
+    {
+      value: "16",
+    },
+  ];
+//Dohvacanje broja zivotinja
+const getCarsCount = () => {
+  fetch(`http://localhost:5000/cars`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then((data) => {
+      setNumberOfItems(data.length);
+    })
+    .catch((err) => console.log(err));
+};
+
+  const getCars=()=>{
+    fetch(`http://localhost:5000/cars?_limit=${rpp}&_page=${page}`)
+    .then((res) => {
+      if(res.ok){
+        return res.json();
+      }
+    })
+    .then((data) => {
+      setCarList(data)
+    })
+    .catch((err) => console.log(err))
+  }
+
+  useEffect(() => {
+    getCarsCount()
+//Settanje paginacije 
+  },[])
+  useEffect(() => {
+    if (numberOfItems > 0) {
+      const numOfPages = Math.ceil(numberOfItems / rpp);
+      if (page > numOfPages) {
+        setPage(numOfPages);
+      } else {
+        getCars();
+      }
+    }    
+  },[rpp, page, numberOfItems])
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <main className="home">
+        <div className="home-header">
+          <h1>Car Brands</h1>
+          <Pagination
+           numOfPages={Math.ceil(numberOfItems / rpp)}
+           activePage={page}
+           onPaginate={(activePages) => setPage(activePages)}
+          />
+          <DropDown options={rppOptions}
+          onChange={(activeRpp) => setRpp(Number(activeRpp.value))}
+          defaultValue={rppOptions[0]}
+          />
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <CardCard carBrands={carList} />
+      </main>
+    </>
   )
 }
+export default Home

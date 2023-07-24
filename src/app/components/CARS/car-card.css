@@ -1,0 +1,17 @@
+.card-wrapper{
+    display: grid;
+    gap:1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.car-card{
+    background-color: rgb(235, 235, 235);
+    display: flex;
+    align-items: stretch;
+}
+.car-card img{
+    width: 10rem;
+    height: 100%;
+}
+.car-card-info{
+    padding: 1rem;
+}

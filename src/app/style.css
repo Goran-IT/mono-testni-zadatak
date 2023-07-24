@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 5rem 0;
+    background-image: linear-gradient(to left,rgb(37, 37, 37),rgb(58, 57, 57));
+}
+h1{
+    color: white
+}
+
+
+@import "./home.css";
+@import "./components/CARS/car-card.css";
+@import "./components/DROP-DOWN/drop-down.css";
+@import "./components/PAGINATION/pagination.css";
+

@@ -1,0 +1,398 @@
+{
+    "cars": [
+        {
+            "id": 1,
+            "name": "Toyota",
+            "models": [
+              {"id": 1, "name": "Corolla"},
+              {"id": 2, "name": "Camry"},
+              {"id": 3, "name": "RAV4"},
+              {"id": 4, "name": "Prius"}
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Ford",
+            "models": [
+              {"id": 5, "name": "Fiesta"},
+              {"id": 6, "name": "Focus"},
+              {"id": 7, "name": "Mustang"},
+              {"id": 8, "name": "Escape"}
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Honda",
+            "models": [
+              {"id": 9, "name": "Civic"},
+              {"id": 10, "name": "Accord"},
+              {"id": 11, "name": "CR-V"},
+              {"id": 12, "name": "Pilot"}
+            ]
+          },
+      {
+        "id": 4,
+        "name": "Chevrolet",
+        "models": [
+          {"id": 13, "name": "Silverado"},
+          {"id": 14, "name": "Malibu"},
+          {"id": 15, "name": "Equinox"},
+          {"id": 16, "name": "Tahoe"}
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Nissan",
+        "models": [
+          {"id": 17, "name": "Altima"},
+          {"id": 18, "name": "Maxima"},
+          {"id": 19, "name": "Rogue"},
+          {"id": 20, "name": "Pathfinder"}
+        ]
+      },
+      {
+        "id": 6,
+        "name": "BMW",
+        "models": [
+          {"id": 21, "name": "3 Series"},
+          {"id": 22, "name": "5 Series"},
+          {"id": 23, "name": "X5"},
+          {"id": 24, "name": "i8"}
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Mercedes-Benz",
+        "models": [
+          {"id": 25, "name": "C-Class"},
+          {"id": 26, "name": "E-Class"},
+          {"id": 27, "name": "S-Class"},
+          {"id": 28, "name": "GLC"}
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Audi",
+        "models": [
+          {"id": 29, "name": "A4"},
+          {"id": 30, "name": "A6"},
+          {"id": 31, "name": "Q5"},
+          {"id": 32, "name": "Q7"}
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Hyundai",
+        "models": [
+          {"id": 33, "name": "Elantra"},
+          {"id": 34, "name": "Sonata"},
+          {"id": 35, "name": "Tucson"},
+          {"id": 36, "name": "Santa Fe"}
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Kia",
+        "models": [
+          {"id": 37, "name": "Forte"},
+          {"id": 38, "name": "Optima"},
+          {"id": 39, "name": "Sorento"},
+          {"id": 40, "name": "Sportage"}
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Subaru",
+        "models": [
+          {"id": 41, "name": "Impreza"},
+          {"id": 42, "name": "Outback"},
+          {"id": 43, "name": "Forester"},
+          {"id": 44, "name": "Crosstrek"}
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Volkswagen",
+        "models": [
+          {"id": 45, "name": "Golf"},
+          {"id": 46, "name": "Jetta"},
+          {"id": 47, "name": "Tiguan"},
+          {"id": 48, "name": "Atlas"}
+        ]
+      },
+      {
+        "id": 13,
+        "name": "Mazda",
+        "models": [
+          {"id": 49, "name": "Mazda3"},
+          {"id": 50, "name": "Mazda6"},
+          {"id": 51, "name": "CX-5"},
+          {"id": 52, "name": "MX-5 Miata"}
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Jeep",
+        "models": [
+          {"id": 53, "name": "Wrangler"},
+          {"id": 54, "name": "Grand Cherokee"},
+          {"id": 55, "name": "Cherokee"},
+          {"id": 56, "name": "Compass"}
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Lexus",
+        "models": [
+          {"id": 57, "name": "RX"},
+          {"id": 58, "name": "NX"},
+          {"id": 59, "name": "ES"},
+          {"id": 60, "name": "LS"}
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Volvo",
+        "models": [
+          {"id": 61, "name": "XC60"},
+          {"id": 62, "name": "XC90"},
+          {"id": 63, "name": "S60"},
+          {"id": 64, "name": "V90"}
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Land Rover",
+        "models": [
+          {"id": 65, "name": "Range Rover"},
+          {"id": 66, "name": "Discovery"},
+          {"id": 67, "name": "Evoque"},
+          {"id": 68, "name": "Defender"}
+        ]
+      },
+      {
+        "id": 18,
+        "name": "Tesla",
+        "models": [
+          {"id": 69, "name": "Model S"},
+          {"id": 70, "name": "Model 3"},
+          {"id": 71, "name": "Model X"},
+          {"id": 72, "name": "Model Y"}
+        ]
+      },
+      {
+        "id": 19,
+        "name": "Porsche",
+        "models": [
+          {"id": 73, "name": "911"},
+          {"id": 74, "name": "Cayenne"},
+          {"id": 75, "name": "Panamera"},
+          {"id": 76, "name": "Macan"}
+        ]
+      },
+      {
+        "id": 20,
+        "name": "Ferrari",
+        "models": [
+          {"id": 77, "name": "488"},
+          {"id": 78, "name": "812 Superfast"},
+          {"id": 79, "name": "F8 Tributo"},
+          {"id": 80, "name": "Portofino"}
+        ]
+      },
+      {
+        "id": 21,
+        "name": "Mitsubishi",
+        "models": [
+          {"id": 81, "name": "Outlander"},
+          {"id": 82, "name": "Eclipse Cross"},
+          {"id": 83, "name": "Lancer"},
+          {"id": 84, "name": "Pajero"}
+        ]
+      },
+      {
+        "id": 22,
+        "name": "Chrysler",
+        "models": [
+          {"id": 85, "name": "300"},
+          {"id": 86, "name": "Pacifica"},
+          {"id": 87, "name": "Voyager"},
+          {"id": 88, "name": "Aspen"}
+        ]
+      },
+      {
+        "id": 23,
+        "name": "Jaguar",
+        "models": [
+          {"id": 89, "name": "XE"},
+          {"id": 90, "name": "XF"},
+          {"id": 91, "name": "F-PACE"},
+          {"id": 92, "name": "I-PACE"}
+        ]
+      },
+      {
+        "id": 24,
+        "name": "Acura",
+        "models": [
+          {"id": 93, "name": "TLX"},
+          {"id": 94, "name": "MDX"},
+          {"id": 95, "name": "RDX"},
+          {"id": 96, "name": "NSX"}
+        ]
+      },
+      {
+        "id": 25,
+        "name": "Fiat",
+        "models": [
+          {"id": 97, "name": "500"},
+          {"id": 98, "name": "500X"},
+          {"id": 99, "name": "124 Spider"},
+          {"id": 100, "name": "500L"}
+        ]
+      },
+      {
+        "id": 26,
+        "name": "Bentley",
+        "models": [
+          {"id": 101, "name": "Continental GT"},
+          {"id": 102, "name": "Bentayga"},
+          {"id": 103, "name": "Flying Spur"},
+          {"id": 104, "name": "Mulsanne"}
+        ]
+      },
+      {
+        "id": 27,
+        "name": "Infiniti",
+        "models": [
+          {"id": 105, "name": "Q50"},
+          {"id": 106, "name": "QX60"},
+          {"id": 107, "name": "QX80"},
+          {"id": 108, "name": "Q60"}
+        ]
+      },
+      {
+        "id": 28,
+        "name": "Genesis",
+        "models": [
+          {"id": 109, "name": "G70"},
+          {"id": 110, "name": "G80"},
+          {"id": 111, "name": "G90"},
+          {"id": 112, "name": "GV80"}
+        ]
+      },
+      {
+        "id": 29,
+        "name": "Mini",
+        "models": [
+          {"id": 113, "name": "Cooper"},
+          {"id": 114, "name": "Countryman"},
+          {"id": 115, "name": "Clubman"},
+          {"id": 116, "name": "Convertible"}
+        ]
+      },
+      {
+        "id": 30,
+        "name": "Polestar",
+        "models": [
+          {"id": 117, "name": "Polestar 2"},
+          {"id": 118, "name": "Polestar 1"}
+        ]
+      },
+      {
+        "id": 31,
+        "name": "Maserati",
+        "models": [
+          {"id": 119, "name": "Ghibli"},
+          {"id": 120, "name": "Levante"},
+          {"id": 121, "name": "Quattroporte"},
+          {"id": 122, "name": "MC20"}
+        ]
+      },
+      {
+        "id": 32,
+        "name": "McLaren",
+        "models": [
+          {"id": 123, "name": "570S"},
+          {"id": 124, "name": "720S"},
+          {"id": 125, "name": "GT"},
+          {"id": 126, "name": "Artura"}
+        ]
+      },
+      {
+        "id": 33,
+        "name": "Alfa Romeo",
+        "models": [
+          {"id": 127, "name": "Giulia"},
+          {"id": 128, "name": "Stelvio"},
+          {"id": 129, "name": "Giulietta"},
+          {"id": 130, "name": "4C"}
+        ]
+      },
+      {
+        "id": 34,
+        "name": "Bugatti",
+        "models": [
+          {"id": 131, "name": "Chiron"},
+          {"id": 132, "name": "Veyron"},
+          {"id": 133, "name": "Divo"}
+        ]
+      },
+      {
+        "id": 35,
+        "name": "Rolls-Royce",
+        "models": [
+          {"id": 134, "name": "Phantom"},
+          {"id": 135, "name": "Cullinan"},
+          {"id": 136, "name": "Ghost"},
+          {"id": 137, "name": "Wraith"}
+        ]
+      },
+      {
+        "id": 36,
+        "name": "Aston Martin",
+        "models": [
+          {"id": 138, "name": "DB11"},
+          {"id": 139, "name": "Vantage"},
+          {"id": 140, "name": "DBX"},
+          {"id": 141, "name": "Valhalla"}
+        ]
+      },
+      {
+        "id": 37,
+        "name": "Lotus",
+        "models": [
+          {"id": 142, "name": "Evora"},
+          {"id": 143, "name": "Exige"},
+          {"id": 144, "name": "Elise"},
+          {"id": 145, "name": "Evija"}
+        ]
+      },
+      {
+        "id": 38,
+        "name": "Maybach",
+        "models": [
+          {"id": 146, "name": "S-Class"},
+          {"id": 147, "name": "GLS"}
+        ]
+      },
+      {
+        "id": 39,
+        "name": "Koenigsegg",
+        "models": [
+          {"id": 148, "name": "Jesko"},
+          {"id": 149, "name": "Gemera"},
+          {"id": 150, "name": "Regera"}
+        ]
+      },
+      {
+        "id": 40,
+        "name": "Pagani",
+        "models": [
+          {"id": 151, "name": "Huayra"},
+          {"id": 152, "name": "Zonda"},
+          {"id": 153, "name": "Huayra Roadster"},
+          {"id": 154, "name": "Huayra BC"}
+        ]
+      }
+    ]
+  }
