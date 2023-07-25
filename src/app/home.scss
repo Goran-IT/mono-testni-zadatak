@@ -1,0 +1,19 @@
+.home{
+    margin: 0 auto;
+    max-width: 1300px;
+    background-color: white;
+    padding: .5rem;
+
+    &__header{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__div{
+        display: flex;
+        flex-direction: column;
+        width: 20rem;
+    }
+}

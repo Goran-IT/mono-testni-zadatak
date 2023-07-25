@@ -1,73 +1,130 @@
 "use client"
 import { useEffect, useState } from "react"
-import CardCard, { CarType } from "./components/CARS/car-card"
-import DropDown, { OptionType } from "./components/DROP-DOWN/drop-down"
+import CarCard, { dataHeaders } from "./components/CARS/car-card"
+import DropDown from "./components/DROP-DOWN/drop-down"
 import Pagination from "./components/PAGINATION/pagination"
+import { observer } from "mobx-react";
+import carStore from "./components/CARS/car-store"
+import Search from "./components/SEARCH/search"
 
-function Home() {
-  const [carList,setCarList] = useState<CarType[]>([])
-  const [rpp, setRpp] = useState<number>(4);
-  const [page,setPage] = useState<number>(1)
-  const [numberOfItems,setNumberOfItems] = useState<number>(1)
+const Home = observer(()=> {
+  const { 
+    carList,
+    rpp,
+    page,
+    numberOfItems,
+    rppOptions,
+    sortingOptions,
+    searchArray,
+    search,
+    sortBy,
+    
+    setCarList,
+    setRpp,
+    setPage,
+    setNumberOfItems,
+    setSearchArray,
+    setSearch,
+    setSortBy,
+    setRemoveSearch,
+  } = carStore;
+  
+ 
 
-  const rppOptions: OptionType[] = [
-    {
-      value: "4",
-    },
-    {
-      value: "8",
-    },
-    {
-      value: "16",
-    },
-  ];
-//Dohvacanje broja zivotinja
-const getCarsCount = () => {
-  fetch(`http://localhost:5000/cars`)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then((data) => {
-      setNumberOfItems(data.length);
-    })
-    .catch((err) => console.log(err));
-};
+  //Dohvacanje broja auta sa servera za logiku za searchanje
+  setNumberOfItems(searchArray.length);
 
-  const getCars=()=>{
-    fetch(`http://localhost:5000/cars?_limit=${rpp}&_page=${page}`)
+  //Funkcija za pretrazivanje
+  const searchCars= () =>{
+    fetch(`http://localhost:5000/cars?q=${search}`)
     .then((res) => {
       if(res.ok){
         return res.json();
       }
     })
     .then((data) => {
-      setCarList(data)
+      setSearchArray(data)
     })
     .catch((err) => console.log(err))
   }
+//Funkcija za dohvacanje sa servera
+  const getCars=()=>{
+    fetch(`http://localhost:5000/cars?_limit=${rpp}&_page=${page}&q=${search}`)
+    .then((res) => {
+      if(res.ok){
+        return res.json();
+      }
+    })
+    .then((data) => {
+      //funkcija za sortiranje !! koja sortira iteme koji su trenutno vidljivi
+      if(sortBy==="A-Z"){
+        setCarList(data.sort((a:any, b:any) => a.name.localeCompare(b.name)));
+    } else if(sortBy==="Z-A"){
+        setCarList(data.sort((a:any, b:any) => b.name.localeCompare(a.name)));
+    } else{
+      setCarList(data)
+    }
 
+    })
+    .catch((err) => console.log(err))
+  }
+//funkcija za brisanje
+  const handleDelete =(id:number)=>{
+    fetch(`http://localhost:5000/cars/${id}`, {
+      method: "DELETE",
+      headers: dataHeaders,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(() => {
+        getCars()
+        setSearch("")
+      })
+      .catch((err) => console.log(err));
+  }
+
+ //Logika za searchanje
   useEffect(() => {
-    getCarsCount()
-//Settanje paginacije 
-  },[])
+    searchCars()
+  },[search])
+
+  //Logika za loadanje paginacije
   useEffect(() => {
     if (numberOfItems > 0) {
       const numOfPages = Math.ceil(numberOfItems / rpp);
       if (page > numOfPages) {
         setPage(numOfPages);
       } else {
-        getCars();
+        getCars()
       }
     }    
-  },[rpp, page, numberOfItems])
+  },[rpp, page, numberOfItems, search, sortBy])
 
   return (
     <>
       <main className="home">
-        <div className="home-header">
+        <div className="home__div">
           <h1>Car Brands</h1>
+          <DropDown
+          options={sortingOptions}
+          placeholder="Sort"
+          onChange={(active)=>setSortBy(active.value)}
+          />
+        </div>
+        <div className="home__header">
+          <div>
+          <Search
+          onSearch={setSearch} 
+          value={search}
+          searchResults={searchArray}
+          chosenCar={(e)=> setSearch(e)}
+          removeText={()=>setSearch("")}
+          />
+         
+          </div>
           <Pagination
            numOfPages={Math.ceil(numberOfItems / rpp)}
            activePage={page}
@@ -76,11 +133,14 @@ const getCarsCount = () => {
           <DropDown options={rppOptions}
           onChange={(activeRpp) => setRpp(Number(activeRpp.value))}
           defaultValue={rppOptions[0]}
+          placeholder="Show"
           />
         </div>
-          <CardCard carBrands={carList} />
+          <CarCard
+          onDelete={(id:number)=>handleDelete(id)}
+          carBrands={carList} />
       </main>
     </>
   )
-}
+})
 export default Home

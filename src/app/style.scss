@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 5rem 0;
+    background-image: linear-gradient(to left,rgb(37, 37, 37),rgb(58, 57, 57));
+}
+
+
+@import "./home.scss";
+@import "./components/CARS/car-card.scss";
+@import "./components/DROP-DOWN/drop-down.scss";
+@import "./components/PAGINATION/pagination.scss";
+@import "./components/SEARCH/search.scss";
+
+

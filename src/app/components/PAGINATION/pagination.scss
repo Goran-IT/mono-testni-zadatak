@@ -1,0 +1,23 @@
+.pagination{  
+    display: flex;
+    &__item{
+        border: 1px solid black;
+        margin: 0 .5rem;
+        padding: .5rem;
+        border-radius: .5rem;
+        cursor: pointer;
+        background-color: white;
+        font-size: 1.5rem;
+
+        &:hover{
+            background-color: rgb(131, 195, 255);
+        }
+    }
+}
+.isActive{
+    background-color: rgb(107, 163, 212);
+}
+.isDisabled{
+    cursor: not-allowed;
+    opacity: .1;
+}

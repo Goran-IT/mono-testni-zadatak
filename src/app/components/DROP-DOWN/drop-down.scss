@@ -1,0 +1,36 @@
+.selector{
+    position: relative;
+    width: max-content;
+    
+    h2{
+        background-color: rgb(207, 207, 207);
+        padding: .2rem 2rem;
+        cursor: pointer;
+        user-select: none;
+        border-radius: .5rem;
+    }
+
+    &__dropdown{
+        position: absolute;
+        top: 3.7rem;
+        width: 100%;
+        z-index: 1;
+        background-color: white;
+        padding: .3rem;
+        border-radius: .4rem;
+    }
+
+    &__option{
+        background-color: white;
+        margin-bottom: .3rem;
+        border-radius: .5rem;
+        padding: .3rem;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover{
+            background-color: rgb(202, 202, 202);
+        }
+    }
+}
