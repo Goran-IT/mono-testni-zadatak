@@ -1,5 +1,5 @@
 import React from 'react'
-import { CarType } from '../CARS/car-card';
+import { CarType } from '../CARS/cars-data';
 import { useEffect, useState } from "react"
 import { observer } from 'mobx-react';
 import carStore from '../CARS/car-store';

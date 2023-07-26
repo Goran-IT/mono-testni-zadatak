@@ -8,6 +8,7 @@
         cursor: pointer;
         background-color: white;
         font-size: 1.5rem;
+        transition: all 250ms ease;
 
         &:hover{
             background-color: rgb(131, 195, 255);

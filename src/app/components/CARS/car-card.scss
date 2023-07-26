@@ -2,11 +2,13 @@
     background-color: rgb(235, 235, 235);
     display: flex;
     align-items: stretch;
+    border: 1px double black;
 
     img{
         width: 10rem;
         height: 100%;
         margin-right: .5rem;
+        border-top-right-radius: 2rem;
     }
 
     &__wrapper{
@@ -16,12 +18,25 @@
     }
 
     &__info{
-        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
 
         button{
             margin-top: 2rem;
             font-size: 1.5rem;
             cursor: pointer;
+            background-color: white;
+            border-radius: 1rem;
+            margin: 2rem .5rem;
+            transition: all 250ms ease;
+
+            &:hover{
+                &:nth-child(even){
+                    background-color: red;
+                }
+                transform: scale(1.1);
+            }
         }
     }
 }

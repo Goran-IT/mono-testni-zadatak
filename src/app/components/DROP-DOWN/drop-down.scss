@@ -8,6 +8,11 @@
         cursor: pointer;
         user-select: none;
         border-radius: .5rem;
+        transition: all 250ms ease;
+
+        &:hover{
+            background-color: rgb(177, 177, 177);
+        }
     }
 
     &__dropdown{
@@ -28,6 +33,7 @@
         text-align: center;
         cursor: pointer;
         user-select: none;
+        transition: all 200ms ease;
 
         &:hover{
             background-color: rgb(202, 202, 202);

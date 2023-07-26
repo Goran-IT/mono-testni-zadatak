@@ -1,6 +1,6 @@
 .home{
     margin: 0 auto;
-    max-width: 1300px;
+    max-width: 1400px;
     background-color: white;
     padding: .5rem;
 
@@ -15,5 +15,51 @@
         display: flex;
         flex-direction: column;
         width: 20rem;
+    }
+}
+.floating__button{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 4rem;
+    padding: 0rem 1rem;
+    border-radius: 5rem;
+    background-color: white;
+    cursor: pointer;
+    transition: all 250ms ease;
+
+    &:hover{
+        padding: .5rem 1.5rem;
+    }
+}
+.modal{
+    position: fixed;
+    background-color: white;
+    width: 40rem;
+    min-height: 30rem;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+    padding: 2rem;
+
+    &__overlay{
+        background-color: black;
+        opacity: .5;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+    }
+
+    &__close{
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+        font-size: 2rem;
     }
 }

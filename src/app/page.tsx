@@ -1,11 +1,13 @@
 "use client"
 import { useEffect, useState } from "react"
-import CarCard, { dataHeaders } from "./components/CARS/car-card"
+import CarCard from "./components/CARS/car-card"
 import DropDown from "./components/DROP-DOWN/drop-down"
 import Pagination from "./components/PAGINATION/pagination"
 import { observer } from "mobx-react";
 import carStore from "./components/CARS/car-store"
 import Search from "./components/SEARCH/search"
+import NewCar from "./components/FORM/form"
+import { dataHeaders } from "./components/CARS/cars-data"
 
 const Home = observer(()=> {
   const { 
@@ -26,10 +28,13 @@ const Home = observer(()=> {
     setSearchArray,
     setSearch,
     setSortBy,
-    setRemoveSearch,
+    
   } = carStore;
-  
- 
+
+  const [newCar,setNewCar]= useState<boolean>(false)
+    const newCardWindow =()=>{
+      setNewCar(!newCar)
+    }
 
   //Dohvacanje broja auta sa servera za logiku za searchanje
   setNumberOfItems(searchArray.length);
@@ -61,15 +66,14 @@ const Home = observer(()=> {
         setCarList(data.sort((a:any, b:any) => a.name.localeCompare(b.name)));
     } else if(sortBy==="Z-A"){
         setCarList(data.sort((a:any, b:any) => b.name.localeCompare(a.name)));
-    } else{
+    } else {
       setCarList(data)
     }
-
     })
     .catch((err) => console.log(err))
   }
 //funkcija za brisanje
-  const handleDelete =(id:number)=>{
+  const handleDelete =(id:string)=>{
     fetch(`http://localhost:5000/cars/${id}`, {
       method: "DELETE",
       headers: dataHeaders,
@@ -82,6 +86,7 @@ const Home = observer(()=> {
       .then(() => {
         getCars()
         setSearch("")
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   }
@@ -101,11 +106,38 @@ const Home = observer(()=> {
         getCars()
       }
     }    
-  },[rpp, page, numberOfItems, search, sortBy])
+  },[rpp, page, numberOfItems, search, sortBy, ])
+
+  useEffect(() => {
+    getCars()
+  },[newCar])
 
   return (
     <>
+      <button className="floating__button" onClick={()=>newCardWindow()}>+</button>
+      {newCar && <>
+      <div onClick={()=>newCardWindow()} className="modal__overlay"/>
+      <div className="modal">
+        <h1>Create New Car</h1><div onClick={()=>newCardWindow()} className="modal__close">	&#10005; </div>
+        <NewCar />
+      </div>
+      </> }
+
       <main className="home">
+        <h1>Mono Testni Zadatak</h1>
+        <p>Ova aplikacija za prikazivanje automobila sadrži sisteme za:</p>
+        <ul>
+          <li>sortiranje</li>
+          <li>pretraživanje</li>
+          <li>paginaciju</li>
+          <li>filter za prikazivanje broja kartica po stranici</li>
+          <li>brisanje kartica</li>
+          <li>dodavanje kartica</li>
+          <li>uređivanje kartica</li>
+        </ul>
+        <p>Ova aplikacija koristi "fake" REST API server koji je pokrenut lokalno
+          pomoću komande <b>npx json-server --watch db.json --port 5000</b> koja se upiše u terminal.
+        </p>
         <div className="home__div">
           <h1>Car Brands</h1>
           <DropDown
@@ -137,7 +169,7 @@ const Home = observer(()=> {
           />
         </div>
           <CarCard
-          onDelete={(id:number)=>handleDelete(id)}
+          onDelete={(id:string)=>handleDelete(id)}
           carBrands={carList} />
       </main>
     </>
