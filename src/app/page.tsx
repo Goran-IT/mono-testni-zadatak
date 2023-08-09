@@ -113,7 +113,7 @@ const handleDelete = async (id: string) => {
       </> }
 
       <main className="home">
-        <h1>Mono Testni Zadatak</h1>
+        <h1>Aplikacija za pretrazivanje automobilak</h1>
         <p>Ova aplikacija za prikazivanje automobila sadrži sisteme za:</p>
         <ul>
           <li>sortiranje</li>

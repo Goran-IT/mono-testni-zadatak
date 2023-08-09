@@ -1,4 +1,4 @@
-Ovo je testni zadatak za Mono d.o.o
+Ovo je testni zadatak Aplikacija za pretrazivanje
 ## Getting Started
 
 Run the development server & fake API server:
