@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ModelType, CarType } from '../CARS/cars-data';
 import { v4 as uuidv4 } from 'uuid';
 import carStore from '../CARS/car-store';
@@ -13,6 +13,7 @@ export type ErrorType={
 const NewCar= () => {
   const httpClient = new HttpClient('http://localhost:5000/cars'); 
   const {setNumberOfItems,numberOfItems,setNewCar} = carStore;
+
 //Ovdje koristim lokalne varijable pošto MobX daje puno errora
   const [newCarName, setNewCarName] = useState<string>('');
   const [newModelName, setNewModelName] = useState<string>('');
@@ -32,18 +33,20 @@ const NewCar= () => {
 }
 
 const handleSaveCar = async () => {
+
   // Reset validation errors
   setError((prevError) => ({
     ...prevError,
-    nameError: '', // Reset name error
-    modelError: '', // Reset model error
+    nameError: '',
+    modelError: '', 
   }));
 
   if (newCarName === "") {
     setError((prevError) => ({ ...prevError, nameError: 'Name is required' }));
   } else if (models.length === 0) {
-    setError((prevError) => ({ ...prevError, modelError: 'At least one model is required' }));
+    setError((prevError) => ({ ...prevError, modelError: 'At least one model is required, press Enter or + sign to add car model to list' }));
   } else {
+
     try {
       const addNewCar: CarType = {
         id: uuidv4(),
@@ -58,7 +61,15 @@ const handleSaveCar = async () => {
       console.error('Error saving new car:', error);
     }
   }
+  
 };
+useEffect(() => {  
+  if (newCarName!=="") {
+    setError((prevError) => ({ ...prevError, nameError: '' }));
+  } if(models.length > 0){
+    setError((prevError) => ({ ...prevError, modelError: '' }));
+  }
+}, [newCarName,models.length]);
 
   return (
     <div className="form">
