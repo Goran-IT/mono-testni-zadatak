@@ -8,6 +8,7 @@ type EditCarModalProps = {
 };
 
 const EditCar= ({ car, onSave, onClose }:EditCarModalProps) => {
+  
   const [editedCar, setEditedCar] = useState<CarType>({ ...car });
 
   const handleEditCarName = (event:any) => {

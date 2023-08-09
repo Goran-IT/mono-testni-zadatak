@@ -160,7 +160,7 @@
       "models": [
         {
           "id": "29",
-          "name": "A4"
+          "name": "Quattro"
         },
         {
           "id": "30",
@@ -965,42 +965,6 @@
       ]
     },
     {
-      "id": "49",
-      "name": "Bugatti",
-      "models": [
-        {
-          "id": "179",
-          "name": "Centodieci"
-        },
-        {
-          "id": "180",
-          "name": "La Voiture Noire"
-        },
-        {
-          "id": "181",
-          "name": "Divo"
-        }
-      ]
-    },
-    {
-      "id": "50",
-      "name": "Rolls-Royce",
-      "models": [
-        {
-          "id": "182",
-          "name": "Phantom"
-        },
-        {
-          "id": "183",
-          "name": "Ghost"
-        },
-        {
-          "id": "184",
-          "name": "Cullinan"
-        }
-      ]
-    },
-    {
       "id": "51",
       "name": "Genesis",
       "models": [
@@ -1133,24 +1097,6 @@
       ]
     },
     {
-      "id": "62",
-      "name": "Fisker Inc",
-      "models": [
-        {
-          "id": "214",
-          "name": "Ocean"
-        },
-        {
-          "id": "215",
-          "name": "Emotion"
-        },
-        {
-          "id": "216",
-          "name": "Karma"
-        }
-      ]
-    },
-    {
       "id": "63",
       "name": "Byton",
       "models": [
@@ -1179,96 +1125,6 @@
         {
           "id": "221",
           "name": "U6ion"
-        }
-      ]
-    },
-    {
-      "id": "65",
-      "name": "Cupra",
-      "models": [
-        {
-          "id": "222",
-          "name": "Leon"
-        },
-        {
-          "id": "223",
-          "name": "Formentor"
-        },
-        {
-          "id": "224",
-          "name": "Tavascan"
-        }
-      ]
-    },
-    {
-      "id": "69",
-      "name": "Changan",
-      "models": [
-        {
-          "id": "234",
-          "name": "CS55"
-        },
-        {
-          "id": "235",
-          "name": "Uni-T"
-        },
-        {
-          "id": "236",
-          "name": "Eado XT"
-        }
-      ]
-    },
-    {
-      "id": "70",
-      "name": "Dacia",
-      "models": [
-        {
-          "id": "237",
-          "name": "Sandero"
-        },
-        {
-          "id": "238",
-          "name": "Duster"
-        },
-        {
-          "id": "239",
-          "name": "Logan"
-        }
-      ]
-    },
-    {
-      "id": "71",
-      "name": "Infiniti",
-      "models": [
-        {
-          "id": "240",
-          "name": "QX50"
-        },
-        {
-          "id": "241",
-          "name": "QX55"
-        },
-        {
-          "id": "242",
-          "name": "Q50"
-        }
-      ]
-    },
-    {
-      "id": "72",
-      "name": "GAC",
-      "models": [
-        {
-          "id": "243",
-          "name": "GS4"
-        },
-        {
-          "id": "244",
-          "name": "GN8"
-        },
-        {
-          "id": "245",
-          "name": "GS8"
         }
       ]
     }

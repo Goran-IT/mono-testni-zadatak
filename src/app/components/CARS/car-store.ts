@@ -1,6 +1,6 @@
 import { observable, action, makeObservable } from "mobx";
-import { CarType } from "./car-card";
 import { OptionType } from "../DROP-DOWN/drop-down";
+import { CarType } from "./cars-data";
 
 class CarStore {
   carList: CarType[] = [];
@@ -11,7 +11,14 @@ class CarStore {
   search: string = "";
   sortBy:string= "";
   removeSearch:boolean = false;
-
+  newCar:boolean=false;
+  selectedCar:CarType|null=null;
+  showEditModal:boolean=false;
+  editedCar: CarType|null = this.selectedCar;
+  results:boolean=false;
+  currentSearchValue:string=this.search;
+  
+  
   rppOptions: OptionType[] = [
     {
       label:"8",
@@ -56,6 +63,18 @@ class CarStore {
       setSortBy:action,
       removeSearch:observable,
       setRemoveSearch:action,
+      newCar:observable,
+      setNewCar:action,
+      editedCar:observable,
+      setEditedCar:action,
+      selectedCar:observable,
+      setSelectedCar:action,
+      showEditModal:observable,
+      setShowEditModal:action,
+      results:observable,
+      setResults:action,
+      currentSearchValue:observable,
+      setCurrentSearchValue:action,
     });
   }
 
@@ -86,6 +105,25 @@ class CarStore {
   setRemoveSearch = (newRemoveSearch:boolean) => {
     this.removeSearch = newRemoveSearch;
   }
+  setNewCar = (newNewCar:boolean) => {
+    this.newCar = newNewCar;
+    
+  }
+  setEditedCar = (newEditedCar: CarType) => {
+    this.editedCar = newEditedCar;
+  };
+  setShowEditModal = (newShowEditModal: boolean) => {
+    this.showEditModal = newShowEditModal;
+  };
+  setSelectedCar = (newselectedCar: CarType|null) => {
+    this.selectedCar = newselectedCar;
+  };
+  setResults = (newResults: boolean) => {
+    this.results = newResults;
+  };
+  setCurrentSearchValue = (newSearchValue: string) => {
+    this.currentSearchValue = newSearchValue;
+  };
 }
 
 const carStore = new CarStore();

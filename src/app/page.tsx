@@ -1,15 +1,17 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect,useState } from "react"
 import CarCard from "./components/CARS/car-card"
 import DropDown from "./components/DROP-DOWN/drop-down"
 import Pagination from "./components/PAGINATION/pagination"
 import { observer } from "mobx-react";
 import carStore from "./components/CARS/car-store"
 import Search from "./components/SEARCH/search"
-import NewCar from "./components/FORM/form"
-import { dataHeaders } from "./components/CARS/cars-data"
+import NewCar from "./components/FORM/createNewCarForm"
+import { CarType } from "./components/CARS/cars-data"
+import HttpClient from "./components/CARS/HttpClient"
 
-const Home = observer(()=> {
+const httpClient = new HttpClient('http://localhost:5000/cars')
+const Home = ()=> {
   const { 
     carList,
     rpp,
@@ -20,7 +22,8 @@ const Home = observer(()=> {
     searchArray,
     search,
     sortBy,
-    
+    newCar,
+    showEditModal,
     setCarList,
     setRpp,
     setPage,
@@ -28,73 +31,55 @@ const Home = observer(()=> {
     setSearchArray,
     setSearch,
     setSortBy,
-    
+    setNewCar,
   } = carStore;
 
-  const [newCar,setNewCar]= useState<boolean>(false)
-    const newCardWindow =()=>{
-      setNewCar(!newCar)
-    }
 
-  //Dohvacanje broja auta sa servera za logiku za searchanje
-  setNumberOfItems(searchArray.length);
+  
 
   //Funkcija za pretrazivanje
-  const searchCars= () =>{
-    fetch(`http://localhost:5000/cars?q=${search}`)
-    .then((res) => {
-      if(res.ok){
-        return res.json();
-      }
-    })
-    .then((data) => {
-      setSearchArray(data)
-    })
-    .catch((err) => console.log(err))
-  }
+  const searchCars = async () => {
+    try {
+      const data = await httpClient.get<CarType[]>(`/?q=${search}`);
+      setSearchArray(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 //Funkcija za dohvacanje sa servera
-  const getCars=()=>{
-    fetch(`http://localhost:5000/cars?_limit=${rpp}&_page=${page}&q=${search}`)
-    .then((res) => {
-      if(res.ok){
-        return res.json();
-      }
-    })
-    .then((data) => {
-      //funkcija za sortiranje !! koja sortira iteme koji su trenutno vidljivi
+  const getCars = async () => {
+    try {
+      const data = await httpClient.get<CarType[]>(`/?_limit=${rpp}&_page=${page}&q=${search}`);
       if(sortBy==="A-Z"){
-        setCarList(data.sort((a:any, b:any) => a.name.localeCompare(b.name)));
+        setCarList(data.sort((a:CarType, b:CarType) => a.name.localeCompare(b.name)));
     } else if(sortBy==="Z-A"){
-        setCarList(data.sort((a:any, b:any) => b.name.localeCompare(a.name)));
+        setCarList(data.sort((a:CarType, b:CarType) => b.name.localeCompare(a.name)));
     } else {
       setCarList(data)
     }
-    })
-    .catch((err) => console.log(err))
-  }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 //funkcija za brisanje
-  const handleDelete =(id:string)=>{
-    fetch(`http://localhost:5000/cars/${id}`, {
-      method: "DELETE",
-      headers: dataHeaders,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then(() => {
-        getCars()
-        setSearch("")
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+const handleDelete = async (id: string) => {
+  try {
+    await httpClient.delete<CarType[]>(`/${id}`);
+    const updatedData = await httpClient.get<CarType[]>(`/?_limit=${rpp}&_page=${page}&q=${search}`);
+      setCarList(updatedData);
+      setSearchArray(updatedData);
+  } catch (error) {
+    console.error(error);
   }
+};
 
  //Logika za searchanje
   useEffect(() => {
     searchCars()
-  },[search])
+    getCars()
+    
+  },[search,numberOfItems])
 
   //Logika za loadanje paginacije
   useEffect(() => {
@@ -103,22 +88,26 @@ const Home = observer(()=> {
       if (page > numOfPages) {
         setPage(numOfPages);
       } else {
-        getCars()
+        getCars() 
       }
     }    
-  },[rpp, page, numberOfItems, search, sortBy, ])
-
+    
+  },[rpp, page, numberOfItems, search, sortBy,showEditModal,newCar ])
+  
   useEffect(() => {
-    getCars()
-  },[newCar])
-
+  },[])
+  
+    //Dohvacanje broja auta sa servera za logiku za searchanje
+  setNumberOfItems(searchArray.length);
+  
   return (
     <>
-      <button className="floating__button" onClick={()=>newCardWindow()}>+</button>
+      <button className="floating__button" onClick={()=>setNewCar(true)}>+</button>
+
       {newCar && <>
-      <div onClick={()=>newCardWindow()} className="modal__overlay"/>
+      <div onClick={()=>setNewCar(false)} className="modal__overlay"/>
       <div className="modal">
-        <h1>Create New Car</h1><div onClick={()=>newCardWindow()} className="modal__close">	&#10005; </div>
+        <h1>Create New Car</h1><div onClick={()=>setNewCar(false)} className="modal__close">	&#10005; </div>
         <NewCar />
       </div>
       </> }
@@ -174,5 +163,5 @@ const Home = observer(()=> {
       </main>
     </>
   )
-})
-export default Home
+}
+export default observer(Home)

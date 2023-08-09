@@ -3,12 +3,12 @@ export type ModelType = {
     id:string;
   }
   
-  export type CarType = {
+export type CarType = {
       id:string;
       name:string;
       models:ModelType[];
     }
   
-    export const dataHeaders = {
-      "Content-Type": "application/json",
-    };
+  export const dataHeaders = {
+    "Content-Type": "application/json",
+  };

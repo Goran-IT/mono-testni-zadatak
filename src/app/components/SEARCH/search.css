@@ -1,0 +1,43 @@
+.search {
+  padding: 0.5rem 0.7rem;
+  outline: none;
+  border: 1px solid black;
+  transition: all 250ms ease;
+  font-size: 1.2rem;
+  width: 15rem;
+}
+.search:focus {
+  border: 1px solid rgb(137, 137, 255);
+}
+.search__results {
+  position: absolute;
+  top: 3.6rem;
+  background-color: white;
+  max-height: 30rem;
+  width: 15rem;
+  overflow-y: scroll;
+  padding-left: 0.5rem;
+}
+.search__item {
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+.search__item:hover {
+  background-color: aliceblue;
+}
+.search__relative {
+  position: relative;
+}
+.search__remove {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+  background-color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.search__remove:hover {
+  transform: scale(1.14);
+}/*# sourceMappingURL=search.css.map */

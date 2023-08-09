@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 5rem 0;
+  background-image: linear-gradient(to left, rgb(37, 37, 37), rgb(58, 57, 57));
+}
+
+.home {
+  margin: 0 auto;
+  max-width: 1400px;
+  background-color: white;
+  padding: 0.5rem;
+}
+.home__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home__div {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}
+
+.floating__button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 4rem;
+  padding: 0rem 1rem;
+  border-radius: 5rem;
+  background-color: white;
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+.floating__button:hover {
+  padding: 0.5rem 1.5rem;
+}
+
+.modal {
+  position: fixed;
+  background-color: white;
+  width: 40rem;
+  min-height: 30rem;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  padding: 2rem;
+}
+.modal__overlay {
+  background-color: black;
+  opacity: 0.5;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.card {
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  align-items: stretch;
+  border: 1px double black;
+}
+.card img {
+  width: 10rem;
+  height: 100%;
+  margin-right: 0.5rem;
+  border-top-right-radius: 2rem;
+}
+.card__wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card__info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+.card__info button {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 1rem;
+  margin: 2rem 0.5rem;
+  transition: all 250ms ease;
+}
+.card__info button:hover {
+  transform: scale(1.1);
+}
+.card__info button:hover:nth-child(even) {
+  background-color: red;
+}
+
+.selector {
+  position: relative;
+  width: -moz-max-content;
+  width: max-content;
+}
+.selector h2 {
+  background-color: rgb(207, 207, 207);
+  padding: 0.2rem 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  border-radius: 0.5rem;
+  transition: all 250ms ease;
+}
+.selector h2:hover {
+  background-color: rgb(177, 177, 177);
+}
+.selector__dropdown {
+  position: absolute;
+  top: 3.7rem;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+}
+.selector__option {
+  background-color: white;
+  margin-bottom: 0.3rem;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: all 200ms ease;
+}
+.selector__option:hover {
+  background-color: rgb(202, 202, 202);
+}
+
+.pagination {
+  display: flex;
+}
+.pagination__item {
+  border: 1px solid black;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: white;
+  font-size: 1.5rem;
+  transition: all 250ms ease;
+}
+.pagination__item:hover {
+  background-color: rgb(131, 195, 255);
+}
+
+.isActive {
+  background-color: rgb(107, 163, 212);
+}
+
+.isDisabled {
+  cursor: not-allowed;
+  opacity: 0.1;
+}
+
+.search {
+  padding: 0.5rem 0.7rem;
+  outline: none;
+  border: 1px solid black;
+  transition: all 250ms ease;
+  font-size: 1.2rem;
+  width: 15rem;
+}
+.search:focus {
+  border: 1px solid rgb(137, 137, 255);
+}
+.search__results {
+  position: absolute;
+  top: 3.6rem;
+  background-color: white;
+  max-height: 30rem;
+  width: 15rem;
+  overflow-y: scroll;
+  padding-left: 0.5rem;
+}
+.search__item {
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+.search__item:hover {
+  background-color: aliceblue;
+}
+.search__relative {
+  position: relative;
+}
+.search__remove {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+  background-color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.search__remove:hover {
+  transform: scale(1.14);
+}
+
+.form__label, .form li {
+  font-size: 1.5rem;
+}
+.form__input {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+.form__button {
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  background-color: greenyellow;
+  cursor: pointer;
+  transition: all 205ms ease;
+  padding: 0.5rem 1rem;
+}
+.form__button:hover {
+  transform: scale(1.1);
+}/*# sourceMappingURL=style.css.map */

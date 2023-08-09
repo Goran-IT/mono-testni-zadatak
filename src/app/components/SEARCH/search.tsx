@@ -13,10 +13,9 @@ type SearchProps = {
 }
 
 const Search = observer(({value,onSearch,searchResults,chosenCar,removeText}:SearchProps) => {
-const { searchArray,setRemoveSearch,removeSearch } = carStore;
+const { searchArray,setRemoveSearch,removeSearch,results,setResults,currentSearchValue,setCurrentSearchValue } = carStore;
 
-    const [results,setResults]=useState<boolean>(false)
-    const [currentValue,setCurrentValue]=useState<string>(value)
+
 
     const toggleResults = (event:any)=>{
         if(event.code ==="Enter"){
@@ -40,7 +39,7 @@ const { searchArray,setRemoveSearch,removeSearch } = carStore;
             setResults(true)
             setRemoveSearch(true)
         } 
-        setCurrentValue(value)
+        setCurrentSearchValue(value)
     },[value])
   return (
     <>
@@ -52,7 +51,7 @@ const { searchArray,setRemoveSearch,removeSearch } = carStore;
     type="text"
     placeholder='Search Cars'
     onKeyDown={(event)=>toggleResults(event)}
-    value={currentValue}
+    value={currentSearchValue}
     onChange={(e) => onSearch(e.target.value)}
     />
     {removeSearch && 

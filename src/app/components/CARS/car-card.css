@@ -1,0 +1,37 @@
+.card {
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  align-items: stretch;
+  border: 1px double black;
+}
+.card img {
+  width: 10rem;
+  height: 100%;
+  margin-right: 0.5rem;
+  border-top-right-radius: 2rem;
+}
+.card__wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card__info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+.card__info button {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 1rem;
+  margin: 2rem 0.5rem;
+  transition: all 250ms ease;
+}
+.card__info button:hover {
+  transform: scale(1.1);
+}
+.card__info button:hover:nth-child(even) {
+  background-color: red;
+}/*# sourceMappingURL=car-card.css.map */

@@ -1,0 +1,42 @@
+.selector {
+  position: relative;
+  width: -moz-max-content;
+  width: max-content;
+}
+.selector h2 {
+  background-color: rgb(207, 207, 207);
+  padding: 0.2rem 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  border-radius: 0.5rem;
+  transition: all 250ms ease;
+}
+.selector h2:hover {
+  background-color: rgb(177, 177, 177);
+}
+.selector__dropdown {
+  position: absolute;
+  top: 3.7rem;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+}
+.selector__option {
+  background-color: white;
+  margin-bottom: 0.3rem;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: all 200ms ease;
+}
+.selector__option:hover {
+  background-color: rgb(202, 202, 202);
+}/*# sourceMappingURL=drop-down.css.map */
